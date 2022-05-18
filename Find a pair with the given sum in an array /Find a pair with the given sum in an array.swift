@@ -1,18 +1,14 @@
 class Program {
-  static func isValidSubsequence(_ array: [Int], _ sequence: [Int]) -> Bool {
-    
-    var sequenceIdx = 0 
-    
-    for parentElement in array {
-      if sequenceIdx == sequence.count {
-        break
-      }
-      if parentElement == sequence[sequenceIdx] {
-        sequenceIdx += 1
-      }
-    }
-    
-    return sequenceIdx == sequence.count
+  func twoNumberSum(_ array: inout [Int], _ targetSum: Int) -> [Int] {
+		var finderDict = [Int: Bool]()
+		for item in array {
+			let diff = targetSum - item
+			if let exists = finderDict[diff], exists {
+				return [item, diff]
+			} else {
+				finderDict[item] = true
+			}
+		}
+		return []
   }
 }
-
