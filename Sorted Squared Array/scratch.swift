@@ -1,4 +1,28 @@
-# Sorted Squared Array
+class Program {
+    func sortedSquaredArray(_ array: [Int]) -> [Int] {
 
-## Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+        var sortedSquaredArray = [Int]()
+
+        var smallerValIdx = 0
+        var largerValIdx = array.count - 1
+
+        for(index, item) in array.enumerated() {
+            let smallerVal = array[smallerValIdx]
+            let largerVal = array[largerValIdx]
+
+            if smallerVal > largerVal {
+                sortedSquaredArray[index] = smallerVal * smallerVal
+                smallerValIdx += 1
+            } else {
+                sortedSquaredArray[index] = largerVal * largerVal
+                largerValIdx -= 1
+            }
+
+        }
+
+        return sortedSquaredArray
+    }
+}
+
+
 
